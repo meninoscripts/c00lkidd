@@ -1,23 +1,12 @@
-bodyGyro.MaxTorque = Vector3.new()
-bodyGyro.D = 10
-bodyGyro.Parent = hrp
-
 script.Parent.MouseButton1Click:Connect(function()
-	isFlying = not isFlying
-end)
+	local sky = Instance.new("Sky")
+	sky.Parent = game.Lighting
 
-script.Parent.MouseButton2Click:Connect(function()
-	isFlying = false
-end)
-
-game:GetService("RunService").RenderStepped:Connect(function()
-	if isFlying then
-		bodyPos.MaxForce = Vector3.new(math.huge, math.huge,math)
-		bodyGyro.MaxTorque = Vector3.new(math.huge, math.huge, math.huge)
-		bodyPos.Position = hrp.Position +((hrp.Position - camera.CFrame.Position).Unit * 10)
-		bodyGyro.CFrame = CFrame.new(camera.CFrame.Position, hrp.Position)
-	else
-		bodyPos.MaxForce = Vector3.new()
-		bodyGyro.MaxTorque = Vector3.new()
-	end
+	-- change the ids
+	sky.SkyboxBk = "rbxassetid://433517917" -- idk
+	sky.SkyboxDn = "rbxassetid://433517917" -- down
+	sky.SkyboxFt = "rbxassetid://433517917" -- idk
+	sky.SkyboxLf = "rbxassetid://433517917" -- left
+	sky.SkyboxRt = "rbxassetid://433517917" -- right
+	sky.SkyboxUp = "rbxassetid://433517917" -- top
 end)
